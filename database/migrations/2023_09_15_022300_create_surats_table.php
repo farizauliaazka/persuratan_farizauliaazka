@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -12,20 +13,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('surat', function (Blueprint $table) {
-            $table->id('id_surat');
-            $table->integer('id_jenis_surat', false)->index('FKIdJenisSurat');
-            $table->integer('id_user', false)->index('FKIdUser');
+            $table->integer('id_surat', true, false)->nullable(false);
+            $table->integer('id_jenis_surat', false, false)->nullable(false)
+                                                           ->index('idJnsSurat');
+            $table->integer('id_user', false, false)->nullable(false)
+                                                    ->index('idUser');
             $table->date('tanggal_surat')->nullable(false)->default('2023-01-01');
             $table->text('ringkasan');
-            $table->text('foto');
-            //Foreign Key
-             $table->foreign('id_jenis_surat')
-                     ->references('id_jenis_surat')->on('jenis_surat')
-                     ->onDelete('cascade')->onUpdate('cascade');
+            $table->text('file');
+            //Foreign Key Jenis_surat
+            $table->foreign('id_jenis_surat')
+                    ->references('id_jenis_surat')->on('jenis_surat')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            //Foreign Key user
             $table->foreign('id_user')
-                    ->references('id_user')->on('auth')
+                    ->references('id_user')->on('tbl_user')
                     ->onDelete('cascade')->onUpdate('cascade');
         });
+
+
     }
 
     /**

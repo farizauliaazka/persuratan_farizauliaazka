@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TblUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuratController;
+use App\Http\Controllers\JenisSuratController;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -20,22 +22,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Buat Route untuk  menampilkan form login dengan nama route 'login'
-Route::get('/login',[AuthController::class,'index'])->name('login');
-//POST LOGIN untuk check password
-Route::post('/login',[AuthController::class,'check']);
-//ROUTE LOGOUT
-Route::get('/logout',[AuthController::class,'logout']);
-//=================
-Route::get('/dashboard', [DashboardController::class, 'index']);
-
-Route::get('/dashboard/surat', [SuratController::class, 'index'])->name('surat.index');
-Route::post('users/{id}', function ($id) {
-    
+Route::prefix('/dashboard')
+        ->middleware(['auth', 'OnlyAdmin'])
+        ->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/manage-user', [TblUserController::class, 'index'])->name('pengguna.index');
+    Route::get('/manage-user/tambah', [TblUserController::class, 'tambah'])->name('pengguna.tambah');
+    Route::get('/manage-user/edit', [TblUserController::class, 'edit'])->name('pengguna.edit');
 });
-Route::get('/dashboard/surat/tambah', [SuratController::class, 'tambah'])->name('surat.tambah');
-Route::post('/dashboard/surat/simpan', [SuratController::class, 'store'])->name('surat.store');
-Route::get('/dashboard/surat/edit/', [SuratController::class, 'edit'])->name('surat.edit');
-Route::post('/dashboard/surat/', [SuratController::class, 'update'])->name('surat.update');
-Route::delete('/dashboard/surat/', [SuratController::class, 'destroy'])->name('surat.destroy');
 
+Route::prefix('/auth')->group(function(){
+    Route::get('/', [AuthController::class, 'index'])->name('login.formlogin');
+    Route::post('/login', [AuthController::class, 'check']);
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::get('/')
+});

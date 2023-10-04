@@ -9,10 +9,13 @@ class Surat extends Model
 {
     use HasFactory;
     protected $table = 'surat';
-    protected $primarykey = 'id_surat';
+    protected $primaryKey = 'id_surat';
     public $timestamps = false;
-    protected $fillable = ['tanggal_surat', 'ringkasan', 'file'];
+    protected $fillable = ['id_jenis_surat', 
+                            'id_user', 
+                            'tanggal_surat', 
+                            'ringksan', 
+                            'file'];
 
-    //RELATION
     
 }

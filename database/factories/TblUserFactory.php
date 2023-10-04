@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Auth>
  */
-class AuthFactory extends Factory
+class TblUserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,7 @@ class AuthFactory extends Factory
         return [
             //
             'username' => fake('id_ID')->userName(),
-            'passsword' => Hash::make('123456'),
+            'password' => Hash::make('123456'),
             'role' => 'admin'
         ];
     }

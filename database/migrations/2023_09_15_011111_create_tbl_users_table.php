@@ -12,8 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('auth', function (Blueprint $table) {
-            $table->id('id_user');
+        Schema::create('tbl_user', function (Blueprint $table) {
+            $table->integer('id_user', true, false)->nullable(false);
             $table->string('username', 200)->nullable(false);
             $table->text('password')->nullable(false);
             $table->enum('role', ['admin', 'operator']);
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('auth');
+        Schema::dropIfExists('tbl_user');
     }
 };

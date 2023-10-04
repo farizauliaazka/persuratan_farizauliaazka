@@ -12,7 +12,8 @@ class JenisSuratController extends Controller
      */
     public function index()
     {
-        //
+        $jenissurat = JenisSurat::all();
+        return view('jenissurat.index', compact('jenissurat'));
     }
 
     /**

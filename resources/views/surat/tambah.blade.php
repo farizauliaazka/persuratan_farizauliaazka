@@ -10,7 +10,7 @@
                         <h5 class="card-title">Tambah Surat</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('dashboard', ['surat', 'simpan']) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('dashboard/surat/simpan') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="ringkasan">Ringkasan Surat:</label>

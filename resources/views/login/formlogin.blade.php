@@ -25,19 +25,20 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-4 tengah">
-                    <form method="POST" action="{{url('/login')}}">
+                    <form method="POST" action="{{url('auth',['login'])}}">
+                        @csrf
                         <div class="card">
                             <div class="card-header">
-                                FORM LOGIN
+                                Form Login Aplikasi Persuratan
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="label">Username</label>
-                                    <input type="text" class="form-control" name="username" placeholder="Masukkan Username" />
+                                    <input type="text" class="form-control" required name="username" placeholder="Masukkan Username" />
                                 </div>
                                 <div class="form-group">
                                     <label class="label">Password</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Masukkan Password" />
+                                    <input type="password" class="form-control" required name="password" placeholder="Masukkan Password" />
                                     @csrf
                                 </div>
                             </div>

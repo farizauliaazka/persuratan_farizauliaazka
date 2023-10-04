@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auth;
+use Auth;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    //Konstruktor
-    public function __construct()
-    {}
-    /**
-     * Display a listing of the resource.
-     */
+    //
     public function index()
     {
-        //Buat Form Login
-         if (!Auth::user()) {
-            return view('login.form');
+        //buat form login
+        if (!Auth::user()) {
+            return view('login.formlogin');
         } else {
             if (Auth::user()->role === 'admin') {
-                return redirect()->to('/dashboard/perusahaan');
+                return redirect()->to('/dashboard');
             } else {
-                return redirect()->to('/kasir/dashboard');
+                return redirect()->to('/dashboard');
             }
         }
     }
@@ -35,60 +30,17 @@ class AuthController extends Controller
             ]
         );
         if (Auth::attempt($akun)) {
-            $request->session()->regenerate();
-            if (Auth::user()->role == 'admin') :
-                return redirect()->to('');
-            else :
-                return redirect()->to('');
-            endif;
+            // $request->session()->regenerate();
+            if (Auth::user()->role == 'admin') {
+                return redirect()->to('/dashboard');
+            } else {
+                return redirect()->to('/dashboard');
+            }
         }
+        return redirect()->to('auth');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Auth $auth)
-    {
-        //
+        # code...
     }
 }

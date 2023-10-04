@@ -9,7 +9,7 @@ class JenisSurat extends Model
 {
     use HasFactory;
     protected $table = 'jenis_surat';
-    protected $primarykey = 'id_jenis_surat';
+    protected $primaryKey = 'id_jenis_surat';
     public $timestamps = false;
-    protected $fillable = 'jenis_surat';
+    protected $fillable = ['jenis_surat'];
 }

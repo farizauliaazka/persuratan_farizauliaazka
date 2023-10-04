@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TblUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Auth;
@@ -14,6 +15,6 @@ class akunSeeder extends Seeder
     public function run(): void
     {
         //
-        Auth::factory(1)->create();
+        TblUser::factory(1)->create();
     }
 }
