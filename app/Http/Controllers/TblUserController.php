@@ -16,19 +16,27 @@ class TblUserController extends Controller
     public function index()
     {
         $data = [
-            'tbl_user' => TblUser::all()
+            'user' => TblUser::all()
         ];
         return view('pengguna.index', $data);
     }
 
     public function tambah()
     {
-        $data = ['tbl_user' => TblUser::all()];
-        return view('pengguna.tambah');
+        $data = ['user' => TblUser::all()];
+        return view('pengguna.tambah', $data);
     }
+
     public function edit()
     {
-        $data = ['tbl_user'=>TblUser::all()];
+        $data = ['user'=>TblUser::all()];
         return view('pengguna.edit', $data);
+    }
+
+    public function delete($id)
+    {
+        $user = TblUser::find($id);
+        $user->delete();
+        return redirect()->route('pengguna.index')->with('success', 'Data Berhasil Dihapus');
     }
 }

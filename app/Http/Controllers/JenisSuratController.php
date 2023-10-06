@@ -19,48 +19,17 @@ class JenisSuratController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function tambah()
     {
-        //
+        $data = ['jenissurat' => JenisSurat::all()];
+        return view('jenissurat.tambah', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function simpan(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(JenisSurat $jenisSurat)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(JenisSurat $jenisSurat)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, JenisSurat $jenisSurat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(JenisSurat $jenisSurat)
-    {
-        //
+        
     }
 }

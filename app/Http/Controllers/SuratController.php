@@ -20,7 +20,7 @@ class SuratController extends Controller
         return view('surat.tambah');
     }
 
-    public function store(Request $request)
+    public function simpan(Request $request)
     {
        // Validasi data yang diterima dari form
     $request->validate([

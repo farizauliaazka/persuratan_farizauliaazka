@@ -25,10 +25,20 @@ Route::get('/', function () {
 Route::prefix('/dashboard')
         ->middleware(['auth', 'OnlyAdmin'])
         ->group(function () {
+    //Manajemen User
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/manage-user', [TblUserController::class, 'index'])->name('pengguna.index');
     Route::get('/manage-user/tambah', [TblUserController::class, 'tambah'])->name('pengguna.tambah');
-    Route::get('/manage-user/edit', [TblUserController::class, 'edit'])->name('pengguna.edit');
+    Route::get('/manage-user/edit/{id}', [TblUserController::class, 'edit'])->name('pengguna.edit');
+    Route::delete('/delete', [TblUserController::class, 'index'])->name('pengguna.index');
+    //Manajemen Persuratan
+    Route::get('/surat', [SuratController::class, 'index'])->name('surat.index');
+    Route::get('/surat/tambah', [SuratController::class, 'tambah'])->name('surat.tambah');
+    Route::post('/surat/simpan', [SuratController::class, 'simpan'])->name('surat.simpan');
+    //Manajemem Jenis Surat
+    Route::get('/jenissurat', [JenisSuratController::class, 'index'])->name('jenissurat.index');
+    Route::get('/jenissurat/tambah', [JenisSuratController::class, 'tambah'])->name('jenissurat.tambah');
+    Route::get('/jenissurat/edit/{id}', [JenisSuratController::class, 'edit'])->name('jenissurat.edit');
 });
 
 Route::prefix('/auth')->group(function(){
