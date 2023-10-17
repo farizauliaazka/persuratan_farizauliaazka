@@ -18,7 +18,10 @@ class OnlyAdmin
     {
         if (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
-        } else {
+        } 
+        if (Auth::check() && Auth::user()->role == 'operator') {
+            return $next($request);
+        }else {
             return redirect('/auth');
         }
     }

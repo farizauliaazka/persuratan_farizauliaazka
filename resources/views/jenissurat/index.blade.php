@@ -25,12 +25,15 @@
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $js->jenis_surat }}</td>
-                                    <td><a href="{{ url('/dashboard') }}/jenissurat/edit">
-                                        <button class="btn btn-success">Edit</button>
-                                        </a>
-                                    </td>
                                     <td>
-                                        <a href="" class="hapusBtn btn btn-danger">Hapus</a>
+                                        <a href="{{ url('/dashboard') }}/jenissurat/edit/{{ $js->id_jenis_surat }}">
+                                            <button class="btn btn-success">Edit</button>
+                                        </a>
+                                        <form action="{{ url('dashboard', ['jenissurat','destroy', $js->id_jenis_surat]) }}" method="POST" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Hapus</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

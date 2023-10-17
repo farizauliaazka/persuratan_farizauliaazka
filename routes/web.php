@@ -30,7 +30,9 @@ Route::prefix('/dashboard')
     Route::get('/manage-user', [TblUserController::class, 'index'])->name('pengguna.index');
     Route::get('/manage-user/tambah', [TblUserController::class, 'tambah'])->name('pengguna.tambah');
     Route::get('/manage-user/edit/{id}', [TblUserController::class, 'edit'])->name('pengguna.edit');
-    Route::delete('/delete', [TblUserController::class, 'index'])->name('pengguna.index');
+    Route::post('/manage-user/simpan', [TblUserController::class, 'simpan'])->name('pengguna.simpan');
+    Route::post('/manage-user/edit/{id}', [TblUserController::class, 'update'])->name('pengguna.update');
+    Route::delete('/manage-user/destroy/{id}', [TblUserController::class, 'destroy'])->name('pengguna.destroy');
     //Manajemen Persuratan
     Route::get('/surat', [SuratController::class, 'index'])->name('surat.index');
     Route::get('/surat/tambah', [SuratController::class, 'tambah'])->name('surat.tambah');
@@ -39,6 +41,9 @@ Route::prefix('/dashboard')
     Route::get('/jenissurat', [JenisSuratController::class, 'index'])->name('jenissurat.index');
     Route::get('/jenissurat/tambah', [JenisSuratController::class, 'tambah'])->name('jenissurat.tambah');
     Route::get('/jenissurat/edit/{id}', [JenisSuratController::class, 'edit'])->name('jenissurat.edit');
+    Route::put('/jenissurat/update/{id}', [JenisSuratController::class, 'update'])->name('jenissurat.update');
+    Route::post('/jenissurat/simpan', [JenisSuratController::class, 'simpan'])->name('jenissurat.simpan');
+    Route::delete('jenissurat/destroy/{id}', [JenisSuratController::class, 'destroy'])->name('jenissurat.destroy');
 });
 
 Route::prefix('/auth')->group(function(){

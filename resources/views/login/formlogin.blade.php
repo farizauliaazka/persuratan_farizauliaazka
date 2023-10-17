@@ -11,7 +11,6 @@
 
         .tengah {
             margin: auto;
-
             width: 50%;
             padding: 10px;
         }
@@ -51,6 +50,7 @@
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
 </body>
 
 </html>

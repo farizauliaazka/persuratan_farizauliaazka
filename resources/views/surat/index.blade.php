@@ -19,9 +19,6 @@
                                 NO
                             </th>
                             <th>
-                                Foto
-                            </th>
-                            <th>
                                 Ringkasan
                             </th>
                             <th>
@@ -29,6 +26,9 @@
                             </th>
                             <th>
                                 Tanggal Surat
+                            </th>
+                            <th>
+                                File
                             </th>
                             <th>
                                 Aksi
@@ -42,13 +42,13 @@
                         @foreach($surat as $s)
                         <tr>
                             <td>{{$no++}}</td>
+                            <td>{{$s->ringkasan}}</td>
+                            <td>{{$s->jenis_surat}}</td>
+                            <td>{{$s->tanggal_surat}}</td>
                             <td>
                                 <!-- Tampilkan gambar/foto surat -->
                                 <img src="{{ asset($s->foto) }}" alt="Foto Surat" style="max-width: 95px; height: auto;">
                             </td>
-                            <td>{{$s->ringkasan}}</td>
-                            <td>{{$s->id_jenis_surat}}</td>
-                            <td>{{$s->tanggal_surat}}</td>
                             <td>
                                 <a href="{{url('/dashboard')}}/surat/edit/{{$s->id_surat}}">
                                     <button class="btn btn-primary">Edit</button>
